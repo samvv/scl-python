@@ -5,15 +5,11 @@ from typing import Any, Generic, TypeIs, TypeVar, cast
 
 from scl.tree import Node
 
-from .util import Comparable, nonnull
+from .util import nonnull
 from .binarytree import BinaryTree, BinaryNode
 
 
-class PointLike(Comparable):
-    pass
-
-
-Point = TypeVar('Point', bound=PointLike)
+Point = TypeVar('Point', bound=int | float)
 Data = TypeVar('Data', default=None)
 
 
