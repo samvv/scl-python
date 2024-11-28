@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scl"
+version = "0.1.0"
+dependencies = []
+requires-python = ">=3.8"
+authors = [
+  {name = "Sam Vervaeck", email = "samvv@pm.me"},
+]
+maintainers = [
+  {name = "Sam Vervaeck", email = "samvv@pm.me"}
+]
+description = "An advanced standard collections library for Python"
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+keywords = [
+  "collection",
+  "data type",
+  "data structure",
+  "algorithm",
+  "binary tree",
+  "AVL tree",
+  "interval tree",
+  "library"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest"
+]
+
+[project.urls]
+Homepage = "https://github.com/samvv/scl-python"
+Repository = "https://github.com/samvv/scl-python.git"
+"Bug Tracker" = "https://github.com/samvv/scl-python/issues"
+
