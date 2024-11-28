@@ -48,7 +48,7 @@ coverage of most, if not all, of the algorithms that are being used here.
 
 The MIT License
 
-[js]: https://github.com/scl.js
+[js]: https://github.com/samvv/scl.js
 [issue]: https://github.com/samvv/scl-python/issues/new
 [pull]: https://github.com/samvv/scl-python/fork
 [w8r]: https://github.com/w8r/avl
