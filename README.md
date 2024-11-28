@@ -4,7 +4,7 @@ full support for types. Initially started as a side-project to abstract
 away some common patterns in other projects, this library continues to grow to
 become a full standard library of efficient algorithms.
 
-👉 See also [the sister project for JavaScript][0]
+👉 See also [the sister project for JavaScript][js]
 
 ```
 python3 -m pip install -U scl
