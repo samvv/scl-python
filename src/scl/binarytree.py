@@ -9,7 +9,7 @@ from .intervaltree import nonnull
 from .util import Comparable
 
 
-_K = TypeVar('_K', bound=Comparable)
+K = TypeVar('K', bound=Comparable)
 
 
 class BinaryNode(Node[T]):
@@ -60,9 +60,9 @@ def _is_binary_node(value: Any) -> TypeIs[BinaryNode]:
     return True
 
 
-class BinaryTree(Tree[T], Generic[T, _K]):
+class BinaryTree(Tree[T], Generic[T, K]):
 
-    def __init__(self, key: str | Callable[[T], _K] | None = None) -> None:
+    def __init__(self, key: str | Callable[[T], K] | None = None) -> None:
         super().__init__()
         if key is None:
             get_key = lambda value: value

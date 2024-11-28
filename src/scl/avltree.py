@@ -1,8 +1,7 @@
 
-from typing import Any, TypeIs, cast
+from typing import Any, TypeIs
 
-from scl.tree import Node
-from scl.binarytree import BinaryNode, BinaryTree
+from scl.binarytree import K, BinaryNode, BinaryTree
 from scl.util import T, nonnull
 
 
