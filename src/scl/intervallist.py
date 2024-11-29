@@ -24,6 +24,9 @@ class IntervalList(MutableSet[Interval[Point]], Generic[Point]):
     def within(self, needle: Interval[Point]) -> bool:
         raise NotImplementedError()
 
+    def overlap_point(self, p: Point) -> set[Interval[Point]]:
+        raise NotImplementedError()
+
     def add(self, value: Interval[Point]) -> None:
         n = len(self._elements)
         self._elements.append(value)
