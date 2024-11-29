@@ -49,6 +49,9 @@ class IntervalList(MutableSet[Interval[Point]], Generic[Point]):
         self._elements.append(value)
         sort_inserted(self._elements, n)
 
+    def addi(self, start: Point, stop: Point) -> None:
+        self.add(Interval(start, stop))
+
     def __contains__(self, x: object) -> bool:
         return isinstance(x, Interval) and self.within(x)
 
