@@ -86,9 +86,25 @@ class IntervalTree(BinaryTree[Interval[Point, Data], Point]):
         return left
 
     def rotate_right_then_left(self, x: BinaryNode[Interval[Point, Data]]) -> BinaryNode[Interval[Point, Data]]:
+        z = nonnull(x.left)
+        y = nonnull(z.right)
+        assert(_is_interval_node(x))
+        assert(_is_interval_node(y))
+        assert(_is_interval_node(z))
+        x.update_max() # left child of y
+        z.update_max() # right child of y
+        y.update_max() # root node
         return super().rotate_right_then_left(x)
 
     def rotate_left_then_right(self, x: BinaryNode[Interval[Point, Data]]) -> BinaryNode[Interval[Point, Data]]:
+        z = nonnull(x.left)
+        y = nonnull(z.right)
+        assert(_is_interval_node(x))
+        assert(_is_interval_node(y))
+        assert(_is_interval_node(z))
+        z.update_max() # left child of y
+        x.update_max() # right child of y
+        y.update_max() # root node
         return super().rotate_left_then_right(x)
 
     def get_add_hint(self, value: Interval[Point, Data]) -> Any:
