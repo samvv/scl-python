@@ -22,27 +22,7 @@ class IntervalList(MutableSet[Interval[Point]], Generic[Point]):
                 self.add(element)
 
     def within(self, needle: Interval[Point]) -> bool:
-        min = 0
-        max = len(self._elements)
-        print(self._elements)
-        k = needle.start
-        while min < max:
-            i = (max + min) // 2
-            element = self._elements[i]
-            if element.stop < needle.start:
-                min = i+1
-            elif element.start > needle.stop:
-                max = i
-            else: # They are overlapping
-                break;
-        for j in range(min, max):
-            element = self._elements[j]
-            if element.start > k:
-                return False
-            k = element.stop
-            if k >= needle.stop:
-                return True
-        return False
+        raise NotImplementedError()
 
     def add(self, value: Interval[Point]) -> None:
         n = len(self._elements)
