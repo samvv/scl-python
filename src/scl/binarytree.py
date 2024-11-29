@@ -3,10 +3,9 @@ from abc import abstractmethod
 from collections.abc import Callable, Iterator
 from typing import Any, Generic, TypeIs, TypeVar
 
-from scl.tree import T, Node, Tree
-
-from .intervaltree import nonnull
 from .util import Comparable
+from .tree import T, Node, Tree
+from .intervaltree import nonnull
 
 
 K = TypeVar('K', bound=Comparable)
@@ -72,6 +71,7 @@ class BinaryTree(Tree[T], Generic[T, K]):
         else:
             get_key = key
         self._get_key = get_key
+        self._count = 0
 
     def get_add_hint(self, value: T) -> Any:
         key = self._get_key(value)
@@ -211,7 +211,20 @@ class BinaryTree(Tree[T], Generic[T, K]):
             if node.right is not None:
                 stack.append(node.right)
 
+    def __len__(self) -> int:
+        return self._count
+
     @abstractmethod
     def add(self, value: T, /, hint: Any) -> None: ...
 
+    def add_node(self, node: BinaryNode[T], /, hint: Any = None) -> None:
+        if hint is None:
+            hint = self.get_add_hint(node.value)
+        assert(isinstance(hint, BinaryNode))
+        if self._get_key(node.value) < self._get_key(hint.value):
+            hint.left = node
+        else:
+            hint.right = node
+        node.parent = hint
+        self._count += 1
 

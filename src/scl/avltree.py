@@ -77,3 +77,41 @@ class AVLTree(BinaryTree[T, K]):
             z.balance = -1
         y.balance = 0
         return super().rotate_left_then_right(x)
+
+    def add_node(self, node: BinaryNode[T], /, hint: Any = None) -> None:
+        assert(_is_avl_node(node))
+        super().add_node(node, hint)
+        parent = node.parent
+        while parent is not None:
+            assert(_is_avl_node(parent))
+            if node == parent.right:
+                if parent.balance > 0:
+                    if node.balance < 0:
+                        self.rotate_right_then_left(parent)
+                    else:
+                        self.rotate_left(parent)
+                    break
+                elif parent.balance < 0:
+                        parent.balance = 0
+                        break
+                else:
+                    parent.balance = +1
+                    node = parent
+            else:
+                if parent.balance < 0:
+                    if node.balance > 0:
+                        self.rotate_left_then_right(parent)
+                    else:
+                        self.rotate_right(parent)
+                    break
+                elif parent.balance > 0:
+                    parent.balance = 0
+                    break
+                else:
+                    parent.balance  = -1
+                    node = parent
+            parent = node.parent
+
+    def add(self, value: T, /, hint: Any = None) -> None:
+        node = AVLNode(value)
+        return self.add_node(node, hint)
