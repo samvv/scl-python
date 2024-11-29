@@ -149,7 +149,7 @@ class IntervalTree(BinaryTree[Interval[Point, Data], Point]):
                 break
             x = x.next
 
-    def addi(self, start: Point, stop: Point, data: Data | None = None):
+    def addi(self, start: Point, stop: Point, data: Data | None = None) -> None:
         self.add(Interval(start, stop, data))
 
     def __contains__(self, value: object) -> bool:
